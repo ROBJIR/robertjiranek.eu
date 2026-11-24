@@ -1,0 +1,78 @@
+{% comment %}Renders the main navigation bar.
+Vykresluje hlavní navigační lištu.{% endcomment %}{% load static %}
+
+
+<div class="row align-items-start gy-2">
+    <div class="col-12 col-lg">
+
+      <ul class="nav nav-underline rjd-top-menu">
+        <li class="nav-item">
+          <a class="nav-link d-inline-flex align-items-center gap-2
+                {% if request.resolver_match.url_name == 'cassiopeia' %}active{% endif %}
+            " href="{% url 'cassiopeia' %}"
+                {% if request.resolver_match.url_name == 'cassiopeia' %}aria-current="page"{% endif %}>
+            <img src="{% static 'img/cassiopeia/logo-casiopeia.png' %}" height="22" alt="cassiopeia logo" />
+            Cassiopeia project
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link
+                {% if request.resolver_match.url_name == 'whohas' %}active{% endif %}
+                {% if not perms.whohas.view_whohashomepage %}disabled{% endif %}"
+             href="{% url 'whohas' %}"
+                {% if request.resolver_match.url_name == 'whohas' %}aria-current="page"{% endif %}
+                {% if not perms.whohas.view_whohashomepage %} aria-disabled="true" {% endif %}>
+              Who Has My Stuff?</a>
+        </li>
+        {% comment %}
+        <li class="nav-item">
+          <a class="nav-link
+                {% if request.resolver_match.url_name == 'paidyet' %}active{% endif %}
+                {% if not perms.paidyet.view_paidyethomepage %}disabled{% endif %}"
+             href="{% url 'paidyet' %}"
+                {% if request.resolver_match.url_name == 'paidyet' %}aria-current="page"{% endif %}
+                {% if not perms.paidyet.view_paidyethomepage %} aria-disabled="true" {% endif %}>
+            Paid yet?
+          </a>
+        </li>
+        {% endcomment %}
+        <li class="nav-item">
+          <a class="nav-link
+                {% if request.resolver_match.url_name == 'meta' %}active{% endif %}
+                {% if not perms.meta.view_meta %}disabled{% endif %}"
+             href="{% url 'meta' %}"
+                {% if request.resolver_match.url_name == 'meta' %}aria-current="page"{% endif %}
+                {% if not perms.meta.view_meta %} aria-disabled="true" {% endif %}>
+            Meta
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="col-auto">
+        <div class="dropdown">
+          <a class="btn rjd-top-menu-button dropdown-toggle d-inline-flex align-items-center gap-2 bi bi-gear" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Administration">
+              administrations
+          </a>
+          <ul class="dropdown-menu rjd-dropdown-menu">
+            <li><a class="dropdown-item" href="/admin" target="_blank">Django Administration</a></li>
+            <li><a class="dropdown-item" href="{% url 'sysadm' %}">System Administrations</a></li>
+            <li><a class="dropdown-item" href="{% url 'syslog' %}">System Logging</a></li>
+              <!--   <li><a class="dropdown-item" href="#">another action</a></li> -->
+          </ul>
+        </div>
+    </div>
+    {% comment %}
+    <div class="col-auto">
+        <div class="dropdown">
+          <a class="btn rjd-top-menu-button dropdown-toggle d-inline-flex align-items-center gap-2 bi bi-globe-americas-fill" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Change language">
+                EN
+          </a>
+          <ul class="dropdown-menu rjd-dropdown-menu">
+            <li><a class="dropdown-item" href="#">CS</a></li>
+            <li><a class="dropdown-item" href="#">EN</a></li>
+          </ul>
+        </div>
+    </div>
+    {% endcomment %}
+</div>
+

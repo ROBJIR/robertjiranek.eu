@@ -1,0 +1,13 @@
+{% comment %}Displays a duration in milliseconds with an icon.
+Zobrazuje dobu v milisekundách s ikonou.{% endcomment %}{% load filters %}
+
+{% if var_timedelta %}
+    {% if var_timedelta_icon %}
+        <i class="bi bi-{{ var_timedelta_icon }}"></i>
+    {% else %}
+        <i class="bi bi-stopwatch"></i>
+    {% endif %}
+
+        {{ var_timedelta|milliseconds|floatformat:0 }}ms
+
+{% endif %}
