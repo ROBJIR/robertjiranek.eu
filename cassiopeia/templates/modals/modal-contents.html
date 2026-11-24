@@ -2,16 +2,16 @@
 Dodává obsah informačních dialogových oken.{% endcomment %}{% load static %}
 
 {% if web_page_attributes.application_code == 'paidyet' %}
-  {% include "modal-windows/modal-content-paidyet.html" %}
+  {% include "modals/modal-content-paidyet.html" %}
 {% endif %}
 {% if web_page_attributes.application_code == 'whohas' %}
-  {% include "modal-windows/modal-content-whohas.html" %}
+  {% include "modals/modal-content-whohas.html" %}
 {% endif %}
 {% if web_page_attributes.application_code == 'sysadm' %}
-  {% include "modal-windows/modal-content-sysadm.html" %}
+  {% include "modals/modal-content-sysadm.html" %}
 {% endif %}
-{% if web_page_attributes.application_code == 'cassiopeia' %}
-  {% include "modal-windows/modal-content-cassiopeia.html" %}
+{% if web_page_attributes.application_code == 'sysweb' or web_page_attributes.application_code == 'cassiopeia' %}
+  {% include "modals/modal-content-cassiopeia.html" %}
 {% endif %}
 
 {% comment %}

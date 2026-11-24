@@ -1,23 +1,26 @@
-{% comment %}Renders the shared page header.
-Vykresluje společnou hlavičku stránky.{% endcomment %}{% load static %}
+{% comment %}
+	Renders the shared page header.
+	Vykresluje společnou hlavičku stránky.
+{% endcomment %}
+{% load static %}
 <header class="container-fluid rjd-header">
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-12">
-				{% include "syscor-menu-top.html" %}
+				{% include "menu/menu-top-line.html" %}
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-sm-12">
 
-				{% include "syscor-nav-line.html" %}
+				{% include "menu/menu-nav-line.html" %}
 
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-sm-12">
 
-				{% include web_page_attributes.application_file_menu %}
+				{% include "menu/menu-dropdown-line.html" %}
 
 			</div>
 		</div>

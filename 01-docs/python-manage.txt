@@ -1,0 +1,14 @@
+
+
+Django Server
+- start server:
+
+python manage.py runserver 0.0.0.0:8000
+
+
+Django Auth
+- change password:
+
+python manage.py changepassword admin
+
+ - pwd: Django1123

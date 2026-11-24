@@ -1,0 +1,29 @@
+{% extends "body.html" %}
+{% comment %}
+	Shows the Cassiopeia home page.
+	Zobrazuje úvodní stránku Cassiopeji.
+{% endcomment %}
+{% load static %}
+{% block content-l2 %}
+
+<div class="row">
+	<div class="col-sm-3">
+
+		<img src="{% static 'img/cassiopeia/logo-casiopeia.png' %}" class="img-fluid" alt="cassiopeia logo" />
+
+	</div>
+	<div class="col-sm-9">
+
+		<h1>Cassiopeia</h1>
+		<div>
+		Main page of project Cassiopeiaq
+		</div>
+		<p></p>
+	</div>
+</div>
+<div class="row">
+	<div class="col-sm-12">
+	</div>
+</div>
+
+{% endblock %}

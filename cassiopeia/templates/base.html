@@ -1,5 +1,8 @@
-{% comment %}Defines the shared page layout and loads site assets.
-Definuje společné rozložení stránek a načítá jejich prostředky.{% endcomment %}<!doctype html>
+<!doctype html>
+{% comment %}
+Defines the shared page layout and loads site assets.
+Definuje společné rozložení stránek a načítá jejich prostředky.
+{% endcomment %}
 {% load static %}
 <html lang="en">
 <head>
@@ -17,7 +20,7 @@ Definuje společné rozložení stránek a načítá jejich prostředky.{% endco
 <body id="myCasiopeiaBody" class="d-flex flex-column min-vh-100">
 
 	<!-- header: syscor-header.html -->
-	{% include "syscor-header.html" %}
+	{% include "header.html" %}
 
 	<!-- body: syscor-body.html -->
 
@@ -25,10 +28,10 @@ Definuje společné rozložení stránek a načítá jejich prostředky.{% endco
 			{% endblock %}
 
 	<!-- footer: syscor-footer.html -->
-	{% include "syscor-footer.html" %}
+	{% include "footer.html" %}
 
     <!-- modal windows: core-modal-windows.html -->
-	{% include "modal-windows/modal-windows.html" %}
+	{% include "modals/modal-windows.html" %}
 
 	<!-- Bootstrap - JavaScript -->
     <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>

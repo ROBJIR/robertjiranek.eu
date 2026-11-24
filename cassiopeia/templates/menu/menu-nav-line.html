@@ -1,12 +1,14 @@
-{% comment %}Displays the project brand and account navigation.
-Zobrazuje značku projektu a navigaci k uživatelskému účtu.{% endcomment %}{% load static %}
-
+{% comment %}
+    Displays the project brand and account navigation.
+    Zobrazuje značku projektu a navigaci k uživatelskému účtu.
+{% endcomment %}
+{% load static %}
 
 <div class="row align-items-center gy-2">
     <div class="col-12 col-lg">
         <nav class="navbar rjd-brand-row justify-content-start align-items-start flex-nowrap">
-            <a class="navbar-brand rjd-project-name" href="/{{ web_page_attributes.application_code }}">
-                {{ web_page_attributes.application_name }}
+            <a class="navbar-brand rjd-project-name" href="{% url 'webhome' %}">
+                robertjiranek.eu
             </a>
             <a class="icon-link rjd-header-action" href="#aboutProjectInfo"
                role="button" data-bs-toggle="modal" data-bs-target="#aboutProjectInfo"
@@ -19,30 +21,42 @@ Zobrazuje značku projektu a navigaci k uživatelskému účtu.{% endcomment %}{
     <div class="col-12 col-lg-auto">
         <div class="rjd-account">
         {% if user.is_authenticated %}
+            {% url 'profile' as profile_url %}
+            {% url 'logout' as logout_url %}
+            {% if profile_url %}
             <div class="rjd-account-details">
-                <a class="rjd-account-profile" href="{% url 'profile' %}">
+                <a class="rjd-account-profile" href="{{ profile_url }}">
                     {{ user.first_name }} {{ user.last_name|default:user.username }}<br>
                     <span class="rjd-account-caption">{{ user.email|default:user.username }}</span>
                 </a>
             </div>
-            <form action="{% url 'logout' %}" method="post">
+            {% endif %}
+            {% if logout_url %}
+            <form action="{{ logout_url }}" method="post">
                 {% csrf_token %}
                 <button class="rjd-account-action" type="submit" aria-label="Logout" title="Logout">
                     <i class="bi bi-power fs-2" aria-hidden="true"></i>
                 </button>
             </form>
+            {% endif %}
         {% else %}
+            {% url 'registration' as registration_url %}
+            {% url 'login' as login_url %}
+            {% if registration_url %}
             <div class="rjd-account-details">
-                <a class="rjd-account-profile" href="{% url 'registration' %}">REGISTRATION</a>
+                <a class="rjd-account-profile" href="{{ registration_url }}">REGISTRATION</a>
             </div>
-            |
+            {% endif %}
+            {% if registration_url and login_url %}|{% endif %}
+            {% if login_url %}
             <div class="rjd-account-details">
-                <a class="rjd-account-profile" href="{% url 'login' %}">LOGIN</a>
+                <a class="rjd-account-profile" href="{{ login_url }}">LOGIN</a>
             </div>
-            <a class="rjd-account-action" href="{% url 'login' %}"
+            <a class="rjd-account-action" href="{{ login_url }}"
                aria-label="Login" title="Login">
                 <i class="bi bi-person-circle fs-2" aria-hidden="true"></i>
             </a>
+            {% endif %}
         {% endif %}
         </div>
     </div>
